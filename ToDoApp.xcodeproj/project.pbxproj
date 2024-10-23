@@ -24,15 +24,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FC6E63452CBD560200D10829 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC6E63552CBD560300D10829 /* TestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC6E635F2CBD560300D10829 /* TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6E63452CBD560200D10829 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6E63552CBD560300D10829 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6E635F2CBD560300D10829 /* ToDoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		FC6E63472CBD560200D10829 /* TestApp */ = {
+		FC6E63472CBD560200D10829 /* ToDoApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestApp;
+			path = ToDoApp;
 			sourceTree = "<group>";
 		};
 		FC6E63582CBD560300D10829 /* TestAppTests */ = {
@@ -75,19 +75,19 @@
 		FC6E633C2CBD560200D10829 = {
 			isa = PBXGroup;
 			children = (
-				FC6E63472CBD560200D10829 /* TestApp */,
 				FC6E63582CBD560300D10829 /* TestAppTests */,
 				FC6E63622CBD560300D10829 /* TestAppUITests */,
 				FC6E63462CBD560200D10829 /* Products */,
+				FC6E63472CBD560200D10829 /* ToDoApp */,
 			);
 			sourceTree = "<group>";
 		};
 		FC6E63462CBD560200D10829 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC6E63452CBD560200D10829 /* TestApp.app */,
-				FC6E63552CBD560300D10829 /* TestAppTests.xctest */,
-				FC6E635F2CBD560300D10829 /* TestAppUITests.xctest */,
+				FC6E63452CBD560200D10829 /* ToDoApp.app */,
+				FC6E63552CBD560300D10829 /* ToDoAppTests.xctest */,
+				FC6E635F2CBD560300D10829 /* ToDoAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FC6E63442CBD560200D10829 /* TestApp */ = {
+		FC6E63442CBD560200D10829 /* ToDoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC6E63692CBD560300D10829 /* Build configuration list for PBXNativeTarget "TestApp" */;
+			buildConfigurationList = FC6E63692CBD560300D10829 /* Build configuration list for PBXNativeTarget "ToDoApp" */;
 			buildPhases = (
 				FC6E63412CBD560200D10829 /* Sources */,
 				FC6E63422CBD560200D10829 /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				FC6E63472CBD560200D10829 /* TestApp */,
+				FC6E63472CBD560200D10829 /* ToDoApp */,
 			);
-			name = TestApp;
+			name = ToDoApp;
 			packageProductDependencies = (
 			);
 			productName = TestApp;
-			productReference = FC6E63452CBD560200D10829 /* TestApp.app */;
+			productReference = FC6E63452CBD560200D10829 /* ToDoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FC6E63542CBD560300D10829 /* TestAppTests */ = {
+		FC6E63542CBD560300D10829 /* ToDoAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC6E636C2CBD560300D10829 /* Build configuration list for PBXNativeTarget "TestAppTests" */;
+			buildConfigurationList = FC6E636C2CBD560300D10829 /* Build configuration list for PBXNativeTarget "ToDoAppTests" */;
 			buildPhases = (
 				FC6E63512CBD560300D10829 /* Sources */,
 				FC6E63522CBD560300D10829 /* Frameworks */,
@@ -133,16 +133,16 @@
 			fileSystemSynchronizedGroups = (
 				FC6E63582CBD560300D10829 /* TestAppTests */,
 			);
-			name = TestAppTests;
+			name = ToDoAppTests;
 			packageProductDependencies = (
 			);
 			productName = TestAppTests;
-			productReference = FC6E63552CBD560300D10829 /* TestAppTests.xctest */;
+			productReference = FC6E63552CBD560300D10829 /* ToDoAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FC6E635E2CBD560300D10829 /* TestAppUITests */ = {
+		FC6E635E2CBD560300D10829 /* ToDoAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC6E636F2CBD560300D10829 /* Build configuration list for PBXNativeTarget "TestAppUITests" */;
+			buildConfigurationList = FC6E636F2CBD560300D10829 /* Build configuration list for PBXNativeTarget "ToDoAppUITests" */;
 			buildPhases = (
 				FC6E635B2CBD560300D10829 /* Sources */,
 				FC6E635C2CBD560300D10829 /* Frameworks */,
@@ -156,11 +156,11 @@
 			fileSystemSynchronizedGroups = (
 				FC6E63622CBD560300D10829 /* TestAppUITests */,
 			);
-			name = TestAppUITests;
+			name = ToDoAppUITests;
 			packageProductDependencies = (
 			);
 			productName = TestAppUITests;
-			productReference = FC6E635F2CBD560300D10829 /* TestAppUITests.xctest */;
+			productReference = FC6E635F2CBD560300D10829 /* ToDoAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FC6E63402CBD560200D10829 /* Build configuration list for PBXProject "TestApp" */;
+			buildConfigurationList = FC6E63402CBD560200D10829 /* Build configuration list for PBXProject "ToDoApp" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC6E63442CBD560200D10829 /* TestApp */,
-				FC6E63542CBD560300D10829 /* TestAppTests */,
-				FC6E635E2CBD560300D10829 /* TestAppUITests */,
+				FC6E63442CBD560200D10829 /* ToDoApp */,
+				FC6E63542CBD560300D10829 /* ToDoAppTests */,
+				FC6E635E2CBD560300D10829 /* ToDoAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		FC6E63572CBD560300D10829 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FC6E63442CBD560200D10829 /* TestApp */;
+			target = FC6E63442CBD560200D10829 /* ToDoApp */;
 			targetProxy = FC6E63562CBD560300D10829 /* PBXContainerItemProxy */;
 		};
 		FC6E63612CBD560300D10829 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FC6E63442CBD560200D10829 /* TestApp */;
+			target = FC6E63442CBD560200D10829 /* ToDoApp */;
 			targetProxy = FC6E63602CBD560300D10829 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -393,22 +393,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ToDoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = HDK4J957HT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = JonathanJacquat.TestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JonathanJacquat.ToDoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -421,22 +423,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ToDoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = HDK4J957HT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = JonathanJacquat.TestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JonathanJacquat.ToDoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -458,7 +462,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TestApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDoApp";
 			};
 			name = Debug;
 		};
@@ -476,7 +480,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TestApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDoApp";
 			};
 			name = Release;
 		};
@@ -515,7 +519,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FC6E63402CBD560200D10829 /* Build configuration list for PBXProject "TestApp" */ = {
+		FC6E63402CBD560200D10829 /* Build configuration list for PBXProject "ToDoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC6E63672CBD560300D10829 /* Debug */,
@@ -524,7 +528,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC6E63692CBD560300D10829 /* Build configuration list for PBXNativeTarget "TestApp" */ = {
+		FC6E63692CBD560300D10829 /* Build configuration list for PBXNativeTarget "ToDoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC6E636A2CBD560300D10829 /* Debug */,
@@ -533,7 +537,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC6E636C2CBD560300D10829 /* Build configuration list for PBXNativeTarget "TestAppTests" */ = {
+		FC6E636C2CBD560300D10829 /* Build configuration list for PBXNativeTarget "ToDoAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC6E636D2CBD560300D10829 /* Debug */,
@@ -542,7 +546,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC6E636F2CBD560300D10829 /* Build configuration list for PBXNativeTarget "TestAppUITests" */ = {
+		FC6E636F2CBD560300D10829 /* Build configuration list for PBXNativeTarget "ToDoAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC6E63702CBD560300D10829 /* Debug */,

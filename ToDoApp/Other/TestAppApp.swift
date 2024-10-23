@@ -11,7 +11,8 @@ import SwiftUI
 struct TestAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .modelContainer(for: ToDoListItem.self, inMemory: true)
         }
     }
 }
