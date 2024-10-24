@@ -41,7 +41,12 @@ struct ToDoListView: View {
             let index = dailyItems.firstIndex(where: {$0.date == formatDate(item.dueDate)})
             if index != nil {
                 dailyItems[index!].items.append(item)
-                dailyItems[index!].items.sort(by: { !$0.isDone && $1.isDone})
+                dailyItems[index!].items.sort(by: {
+                    if $0.isDone == $1.isDone {
+                        return $0.title < $1.title
+                    }
+                    return !$0.isDone
+                })
             } else {
                 dailyItems.append(
                     DailyItems(items: [item], date: formatDate(item.dueDate)))
@@ -59,14 +64,14 @@ struct ToDoListView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     ForEach(getItemsByDate()) { daily in
-                        ToDoSubListView(items: daily.items, date: daily.date)
+                        ToDoSubListView(viewModel: viewModel, items: daily.items, date: daily.date)
                     }
                 }
                 .navigationTitle("To Do List")
                 .toolbar {
                     ToolbarItemGroup(
                         placement: .topBarTrailing,
-                        content: { ToolbarView(toDoListItems: toDoListItems) })
+                        content: { ToolbarView(viewModel: viewModel, toDoListItems: toDoListItems) })
                 }
                 .sheet(isPresented: $viewModel.showingNewItemView) {
                     NewItemView(newItemPresented: $viewModel.showingNewItemView)
@@ -82,6 +87,7 @@ struct ToDoListView: View {
             }
         }
         .padding(.top, 0)
+        .padding(.bottom, 10)
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToolbarView: View {
-    @StateObject private var viewModel = ToDoListViewViewModel()
+    @StateObject var viewModel: ToDoListViewViewModel
     @Environment(\.modelContext) private var context
 
     var toDoListItems: [ToDoListItem]
@@ -39,5 +39,5 @@ struct ToolbarView: View {
 }
 
 #Preview {
-    ToolbarView(toDoListItems: [])
+    ToolbarView(viewModel: ToDoListViewViewModel(), toDoListItems: [])
 }

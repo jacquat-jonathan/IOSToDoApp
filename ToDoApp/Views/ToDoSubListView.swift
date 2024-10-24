@@ -18,7 +18,7 @@ import SwiftData
 import SwiftUI
 
 struct ToDoSubListView: View {
-    @StateObject private var viewModel = ToDoListViewViewModel()
+    @StateObject var viewModel: ToDoListViewViewModel
     @Environment(\.modelContext) private var context
 
     let items: [ToDoListItem]
@@ -33,6 +33,7 @@ struct ToDoSubListView: View {
                     Text(date)
                         .font(.title2)
                         .padding(.horizontal)
+                        .padding(.bottom, 0)
                     
                     List(items) { item in
                         ToDoListItemView(item: item)
@@ -56,7 +57,8 @@ struct ToDoSubListView: View {
                                 }
                             }
                     }
-                    .listStyle(InsetGroupedListStyle())
+                    .listStyle(PlainListStyle())
+                    .padding(.top, 0)
                 }
             }
         }
@@ -64,6 +66,6 @@ struct ToDoSubListView: View {
 }
 
 #Preview {
-    ToDoSubListView(items: [ToDoListItem(title: "Test", dueDate: .now)], date: "22.01.1999")
+    ToDoSubListView(viewModel: ToDoListViewViewModel(), items: [ToDoListItem(title: "Test", dueDate: .now)], date: "22.01.1999")
         .modelContainer(for: ToDoListItem.self, inMemory: true)
 }
