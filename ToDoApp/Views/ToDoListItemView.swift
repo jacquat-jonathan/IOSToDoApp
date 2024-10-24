@@ -18,11 +18,11 @@ struct ToDoListItemView: View {
     func getColor() -> Color {
         switch Priority.from(int: item.priority)! {
         case .low:
-            return Color.green
+            return Color.blue
         case .medium:
-            return Color.yellow
+            return Color.green
         case .high:
-            return Color.orange
+            return Color.yellow
         case .urgent:
             return Color.red
         }
@@ -47,7 +47,8 @@ struct ToDoListItemView: View {
             }
             .disabled(disabled)
         }
-        .padding()
+        .padding(.horizontal)
+        .padding(.vertical, 10)
     }
 }
 

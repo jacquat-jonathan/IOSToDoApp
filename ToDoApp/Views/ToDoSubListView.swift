@@ -29,7 +29,7 @@ struct ToDoSubListView: View {
     var body: some View {
         if show {
             NavigationView {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 1) {
                     Text(date)
                         .font(.title2)
                         .padding(.horizontal)
@@ -59,6 +59,7 @@ struct ToDoSubListView: View {
                     }
                     .listStyle(PlainListStyle())
                     .padding(.top, 0)
+                    .padding(.bottom, 16)
                 }
             }
         }

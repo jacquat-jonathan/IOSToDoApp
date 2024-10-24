@@ -38,12 +38,18 @@ struct ToDoListView: View {
         var dailyItems: [DailyItems] = []
         let items = toDoListItems.sorted(by: { $0.dueDate < $1.dueDate })
         for item in items {
-            let index = dailyItems.firstIndex(where: {$0.date == formatDate(item.dueDate)})
+            let index = dailyItems.firstIndex(where: {
+                $0.date == formatDate(item.dueDate)
+            })
             if index != nil {
                 dailyItems[index!].items.append(item)
                 dailyItems[index!].items.sort(by: {
                     if $0.isDone == $1.isDone {
-                        return $0.title < $1.title
+                        if $0.priority == $1.priority {
+                            return $0.title < $1.title
+                        } else {
+                            return $0.priority > $1.priority
+                        }
                     }
                     return !$0.isDone
                 })
@@ -62,16 +68,21 @@ struct ToDoListView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 1) {
                     ForEach(getItemsByDate()) { daily in
-                        ToDoSubListView(viewModel: viewModel, items: daily.items, date: daily.date)
+                        ToDoSubListView(
+                            viewModel: viewModel, items: daily.items,
+                            date: daily.date)
                     }
                 }
                 .navigationTitle("To Do List")
                 .toolbar {
                     ToolbarItemGroup(
                         placement: .topBarTrailing,
-                        content: { ToolbarView(viewModel: viewModel, toDoListItems: toDoListItems) })
+                        content: {
+                            ToolbarView(
+                                viewModel: viewModel, toDoListItems: toDoListItems)
+                        })
                 }
                 .sheet(isPresented: $viewModel.showingNewItemView) {
                     NewItemView(newItemPresented: $viewModel.showingNewItemView)
