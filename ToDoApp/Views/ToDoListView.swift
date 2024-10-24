@@ -41,6 +41,7 @@ struct ToDoListView: View {
             let index = dailyItems.firstIndex(where: {$0.date == formatDate(item.dueDate)})
             if index != nil {
                 dailyItems[index!].items.append(item)
+                dailyItems[index!].items.sort(by: { !$0.isDone && $1.isDone})
             } else {
                 dailyItems.append(
                     DailyItems(items: [item], date: formatDate(item.dueDate)))
