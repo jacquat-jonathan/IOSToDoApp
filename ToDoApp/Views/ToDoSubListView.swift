@@ -66,6 +66,6 @@ struct ToDoSubListView: View {
 }
 
 #Preview {
-    ToDoSubListView(viewModel: ToDoListViewViewModel(), items: [ToDoListItem(title: "Test", dueDate: .now)], date: "22.01.1999")
+    ToDoSubListView(viewModel: ToDoListViewViewModel(), items: [ToDoListItem(title: "Test", dueDate: .now, priority: 2)], date: "22.01.1999")
         .modelContainer(for: ToDoListItem.self, inMemory: true)
 }

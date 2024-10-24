@@ -56,7 +56,7 @@ struct ToDoListView: View {
     }
 
     func formatDate(_ date: Date) -> String {
-        return date.formatted(.dateTime.day(.twoDigits).month(.twoDigits))
+        return date.formatted(.dateTime.month(.wide).day(.twoDigits))
     }
 
     var body: some View {
@@ -84,6 +84,11 @@ struct ToDoListView: View {
                                 .showingUpdateItemView)
                     }
                 }
+                .task({
+                    context.insert(ToDoListItem(title: "Test 1", dueDate: .now, priority: 2))
+                    context.insert(ToDoListItem(title: "Test 2", dueDate: .now.addingTimeInterval(24*60*60), priority: 2))
+                    context.insert(ToDoListItem(title: "Test 3", dueDate: .now, priority: 2))
+                })
             }
         }
         .padding(.top, 0)

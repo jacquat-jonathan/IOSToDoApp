@@ -40,5 +40,5 @@ struct ToDoListItemView: View {
 }
 
 #Preview {
-    ToDoListItemView(item: .init(title: "Default", dueDate: Date()), disabled: false)
+    ToDoListItemView(item: .init(title: "Default", dueDate: Date(), priority: 2), disabled: false)
 }

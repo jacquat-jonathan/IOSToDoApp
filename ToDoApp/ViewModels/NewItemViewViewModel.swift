@@ -11,16 +11,14 @@ import SwiftData
 class NewItemViewViewModel: ObservableObject {
     @Published var title = ""
     @Published var dueDate = Date()
+    @Published var priority = Priority.medium
     @Published var showAlert = false
         
     init() {}
     
     func save(context: ModelContext) {
-        guard canSave else {
-            return
-        }
-        context.insert(ToDoListItem(title: title, dueDate: dueDate))
-        try? context.save() // maybe do this before app close
+        context.insert(ToDoListItem(title: title, dueDate: dueDate, priority: priority.rawValue))
+        try? context.save()
     }
     
     func update(context: ModelContext) {
