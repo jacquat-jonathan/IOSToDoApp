@@ -15,14 +15,26 @@ struct ToDoListItemView: View {
     let item: ToDoListItem
     var disabled: Bool = false
     
+    func getColor() -> Color {
+        switch Priority.from(int: item.priority)! {
+        case .low:
+            return Color.green
+        case .medium:
+            return Color.yellow
+        case .high:
+            return Color.orange
+        case .urgent:
+            return Color.red
+        }
+    }
+    
     var body: some View {
         HStack {
+            Image(systemName: "tag.fill")
+                .foregroundStyle(getColor())
             VStack(alignment: .leading) {
                 Text(item.title)
                     .font(.body)
-                Text("\(item.dueDate.formatted(date: .numeric, time: .omitted))")
-                    .font(.footnote)
-                    .foregroundStyle(Color(.secondaryLabel))
             }
             
             Spacer()

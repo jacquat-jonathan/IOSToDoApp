@@ -21,6 +21,10 @@ enum Priority: Int, CaseIterable, Identifiable {
         case .urgent: return "Urgent"
         }
     }
+    
+    static func from(int: Int) -> Priority? {
+        return Priority(rawValue: int)
+    }
 }
 
 
