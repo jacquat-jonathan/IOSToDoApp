@@ -5,15 +5,18 @@
 //  Created by Jonathan Jacquat on 14.10.2024.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct MainView: View {
-    
+
     @Environment(\.modelContext) private var context
 
     @AppStorage("isDarkMode") private var isDarkMode = false
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    private var nbuilder: NotificationBuilder = NotificationBuilder()
+
     var body: some View {
         NavigationView {
             TabView {
@@ -29,7 +32,7 @@ struct MainView: View {
                     }
                 SettingsView()
                     .modelContainer(for: ToDoListItem.self)
-                    .tabItem{
+                    .tabItem {
                         Label("Settings", systemImage: "gear")
                     }
             }

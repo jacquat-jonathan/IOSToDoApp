@@ -36,6 +36,7 @@ class ToDoListItem: Identifiable, ObservableObject {
     var isArchived: Bool
     var category: Category?
     var priority: Int
+    // var reminder: Bool
 
     init(title: String, dueDate: Date, priority: Int) {
         self.title = title

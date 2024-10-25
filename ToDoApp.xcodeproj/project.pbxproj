@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FCB4CD0D2CCBE75D00680E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CD0C2CCBE75D00680E37 /* AppDelegate.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FC6E63562CBD560300D10829 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		FC6E63452CBD560200D10829 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6E63552CBD560300D10829 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6E635F2CBD560300D10829 /* ToDoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCB4CD0C2CCBE75D00680E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		FC6E633C2CBD560200D10829 = {
 			isa = PBXGroup;
 			children = (
+				FCB4CD0C2CCBE75D00680E37 /* AppDelegate.swift */,
 				FC6E63582CBD560300D10829 /* TestAppTests */,
 				FC6E63622CBD560300D10829 /* TestAppUITests */,
 				FC6E63462CBD560200D10829 /* Products */,
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCB4CD0D2CCBE75D00680E37 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
