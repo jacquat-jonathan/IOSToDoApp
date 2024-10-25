@@ -67,38 +67,38 @@ struct ToDoListView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 1) {
-                    ForEach(getItemsByDate()) { daily in
+            VStack(alignment: .leading) {
+                List(getItemsByDate()) { daily in
+                    Section(daily.date) {
                         ToDoSubListView(
                             viewModel: viewModel, items: daily.items,
                             date: daily.date)
                     }
                 }
-                .navigationTitle("To Do List")
-                .toolbar {
-                    ToolbarItemGroup(
-                        placement: .topBarTrailing,
-                        content: {
-                            ToolbarView(
-                                viewModel: viewModel, toDoListItems: toDoListItems)
-                        })
-                }
-                .sheet(isPresented: $viewModel.showingNewItemView) {
-                    NewItemView(newItemPresented: $viewModel.showingNewItemView)
-                }
-                .sheet(isPresented: $viewModel.showingUpdateItemView) {
-                    if let item = viewModel.itemToUpdate {
-                        UpdateItemView(
-                            item: item,
-                            updateItemPresented: $viewModel
-                                .showingUpdateItemView)
-                    }
+
+            }
+            .navigationTitle("To Do List")
+            .toolbar {
+                ToolbarItemGroup(
+                    placement: .topBarTrailing,
+                    content: {
+                        ToolbarView(
+                            viewModel: viewModel,
+                            toDoListItems: toDoListItems)
+                    })
+            }
+            .sheet(isPresented: $viewModel.showingNewItemView) {
+                NewItemView(newItemPresented: $viewModel.showingNewItemView)
+            }
+            .sheet(isPresented: $viewModel.showingUpdateItemView) {
+                if let item = viewModel.itemToUpdate {
+                    UpdateItemView(
+                        item: item,
+                        updateItemPresented: $viewModel
+                            .showingUpdateItemView)
                 }
             }
         }
-        .padding(.top, 0)
-        .padding(.bottom, 10)
     }
 }
 

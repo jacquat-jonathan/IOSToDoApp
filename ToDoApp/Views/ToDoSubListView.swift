@@ -25,48 +25,37 @@ struct ToDoSubListView: View {
     let date: String
     var show: Bool = true
 
-
     var body: some View {
-        if show {
-            NavigationView {
-                VStack(alignment: .leading, spacing: 1) {
-                    Text(date)
-                        .font(.title2)
-                        .padding(.horizontal)
-                        .padding(.bottom, 0)
-                    
-                    List(items) { item in
-                        ToDoListItemView(item: item)
-                            .swipeActions {
-                                Button(
-                                    "Delete",
-                                    action: {
-                                        viewModel.delete(
-                                            context: context, item: item)
-                                    }
-                                )
-                                .tint(.red)
-                                
-                                Button("Update") {
-                                    viewModel.itemToUpdate = item
-                                    viewModel.showingUpdateItemView = true
-                                }.tint(.blue)
-                                Button("Archive") {
-                                    viewModel.setArchive(
-                                        context: context, item: item)
-                                }
-                            }
+        ForEach(items) { item in
+            ToDoListItemView(item: item)
+                .swipeActions {
+                    Button(
+                        "Delete",
+                        action: {
+                            viewModel.delete(
+                                context: context, item: item)
+                        }
+                    )
+                    .tint(.red)
+
+                    Button("Update") {
+                        viewModel.itemToUpdate = item
+                        viewModel.showingUpdateItemView = true
+                    }.tint(.blue)
+                    Button("Archive") {
+                        viewModel.setArchive(
+                            context: context, item: item)
                     }
-                    .listStyle(PlainListStyle())
-                    .padding(.top, 0)
-                    .padding(.bottom, 16)
                 }
-            }
         }
     }
 }
 
 #Preview {
-    ToDoSubListView(viewModel: ToDoListViewViewModel(), items: [ToDoListItem(title: "Test", dueDate: .now, priority: 2)], date: "22.01.1999")
-        .modelContainer(for: ToDoListItem.self, inMemory: true)
+    ToDoSubListView(
+        viewModel: ToDoListViewViewModel(),
+        items: [ToDoListItem(title: "Test 1", dueDate: .now, priority: 2), ToDoListItem(title: "Test 2", dueDate: .now, priority: 3), ToDoListItem(title: "Test 3", dueDate: .now, priority: 4)],
+        date: "22.01.1999"
+    )
+    .modelContainer(for: ToDoListItem.self, inMemory: true)
 }

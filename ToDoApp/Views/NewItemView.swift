@@ -48,9 +48,9 @@ struct NewItemView: View {
     var body: some View {
         VStack {
             Text("New Item")
-                .font(.system(size: 32))
+                .font(.system(size: 28))
                 .bold()
-                .padding(.top, 50)
+                .padding(.top, 25)
             Form {
                 Section("Title") {
                     TextField("Title", text: $viewModel.title)
