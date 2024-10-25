@@ -9,21 +9,46 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("isNotificationEnabled") private var isNotificationEnabled =
+        false
+    @AppStorage("isAutomaticArchive") private var isAutomaticArchive = true
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Text("Display mode").font(.title2)
-                Toggle(
-                    isDarkMode ? "Dark mode" : "Light mode", isOn: $isDarkMode)
-                Divider()
+                List {
+                    Section("Notification") {
+                        Toggle(
+                            "Enable notification", isOn: $isNotificationEnabled)
+                    }
+                    
+                    Section("Automation") {
+                        Toggle(isOn: $isAutomaticArchive) {
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text("Automatic archiving")
+                                Text(
+                                    "Automatically archive tasks once the date has passed"
+                                )
+                                .font(.system(size: 12, weight: .thin))
+                            }
+                        }
+                    }
 
-                Spacer()
+                    Section("App appearance") {
+                        Toggle(isOn: $isDarkMode) {
+                            HStack(spacing: 6) {
+                                Image(systemName: isDarkMode ? "moon.fill" : "sun.max")
+                                Text(isDarkMode ? "Dark mode" : "Light mode")
+                            }
+                        }
+                    }
+                    Text("Version 0.1")
+                }
+                .listStyle(.automatic)
+                .background(.white)
             }
             .navigationTitle("Settings")
-            .padding()
             .preferredColorScheme(isDarkMode ? .dark : .light)
-
         }
     }
 }

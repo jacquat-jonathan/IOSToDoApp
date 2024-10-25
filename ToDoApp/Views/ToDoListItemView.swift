@@ -32,6 +32,7 @@ struct ToDoListItemView: View {
         HStack {
             Image(systemName: "tag.fill")
                 .foregroundStyle(getColor())
+                .padding(.trailing)
             VStack(alignment: .leading) {
                 Text(item.title)
                     .font(.body)

@@ -98,6 +98,19 @@ struct ToDoListView: View {
                             .showingUpdateItemView)
                 }
             }
+            .task({
+                context.insert(
+                    ToDoListItem(
+                        title: "Test 1", dueDate: .now, priority: 4))
+                context.insert(
+                    ToDoListItem(
+                        title: "Test 2",
+                        dueDate: .now.addingTimeInterval(24 * 60 * 60),
+                        priority: 2))
+                context.insert(
+                    ToDoListItem(
+                        title: "Test 3", dueDate: .now, priority: 3))
+            })
         }
     }
 }
