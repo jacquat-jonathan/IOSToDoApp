@@ -20,9 +20,6 @@ import SwiftUI
 struct ToDoListView: View {
     @StateObject private var viewModel = ToDoListViewViewModel()
     @Environment(\.modelContext) private var context
-    @AppStorage("isNotificationEnabled") private var isNotificationEnabled =
-        true
-    private let nbuilder: NotificationBuilder = NotificationBuilder()
 
     // Liste des items non archivés
     @Query(
@@ -60,7 +57,6 @@ struct ToDoListView: View {
                         }
                     }
                 }
-
             }
             .navigationTitle("Tasks")
             .toolbar {
@@ -108,7 +104,7 @@ struct ToDoListView: View {
                         title: "Test 5",
                         dueDate: .now.addingTimeInterval(-1 * 24 * 60 * 60),
                         priority: 2))
-
+                
                 if isNotificationEnabled {
                     if toDoListItems.count > 0 && toDoListItems.sorted(by: { $0.dueDate < $1.dueDate }).first!.dueDate <= .now.addingTimeInterval(60*60*24) {
                         nbuilder.sendNotification(title: "Day's not finished yet...", body: "You still have some task to do!")

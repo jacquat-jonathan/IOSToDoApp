@@ -22,6 +22,7 @@ class ToDoListViewViewModel: ObservableObject {
     @Published var showRestoreAllAlert = false
     @Published var isPopOverPresented = false
     @Published var showMoveOverdueAlert = false
+    @Published var showDoneTasksRemover = false
 
     init() {}
 
@@ -33,6 +34,13 @@ class ToDoListViewViewModel: ObservableObject {
     func deleteAll(context: ModelContext, list: [ToDoListItem]) {
         for item in list {
             context.delete(item)
+        }
+        try? context.save()
+    }
+    
+    func archiveAll(context: ModelContext, list: [ToDoListItem]) {
+        for item in list {
+            item.setIsArchived(true)
         }
         try? context.save()
     }
