@@ -13,9 +13,6 @@ struct MainView: View {
     @Environment(\.modelContext) private var context
 
     @AppStorage("isDarkMode") private var isDarkMode = false
-    
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    private var nbuilder: NotificationBuilder = NotificationBuilder()
 
     var body: some View {
         NavigationView {

@@ -35,6 +35,21 @@ struct ToolbarView: View {
                 secondaryButton: .cancel()
             )
         }
+        
+        Button {
+            viewModel.showMoveOverdueAlert = true
+        } label: {
+            Image(systemName: "calendar.badge.clock.rtl")
+        }
+        .alert(isPresented: $viewModel.showMoveOverdueAlert) {
+            Alert(
+                title: Text("Move all overdue items to today ?"),
+                primaryButton: .destructive(Text("Move")) {
+                    viewModel.movePassedTasks(context: context, list: toDoListItems)
+                },
+                secondaryButton: .cancel()
+            )
+        }
     }
 }
 

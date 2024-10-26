@@ -17,15 +17,12 @@
 import SwiftData
 import SwiftUI
 
-struct DailyItems: Identifiable {
-    var id = UUID()
-    var items: [ToDoListItem]
-    var date: String
-}
-
 struct ToDoListView: View {
     @StateObject private var viewModel = ToDoListViewViewModel()
     @Environment(\.modelContext) private var context
+    @AppStorage("isNotificationEnabled") private var isNotificationEnabled =
+        true
+    private let nbuilder: NotificationBuilder = NotificationBuilder()
 
     // Liste des items non archivés
     @Query(
@@ -34,41 +31,10 @@ struct ToDoListView: View {
         }, sort: \ToDoListItem.dueDate) private var toDoListItems:
         [ToDoListItem]
 
-    func getItemsByDate() -> [DailyItems] {
-        var dailyItems: [DailyItems] = []
-        let items = toDoListItems.sorted(by: { $0.dueDate < $1.dueDate })
-        for item in items {
-            let index = dailyItems.firstIndex(where: {
-                $0.date == formatDate(item.dueDate)
-            })
-            if index != nil {
-                dailyItems[index!].items.append(item)
-                dailyItems[index!].items.sort(by: {
-                    if $0.isDone == $1.isDone {
-                        if $0.priority == $1.priority {
-                            return $0.title < $1.title
-                        } else {
-                            return $0.priority > $1.priority
-                        }
-                    }
-                    return !$0.isDone
-                })
-            } else {
-                dailyItems.append(
-                    DailyItems(items: [item], date: formatDate(item.dueDate)))
-            }
-        }
-        return dailyItems
-    }
-
-    func formatDate(_ date: Date) -> String {
-        return date.formatted(.dateTime.month(.wide).day(.twoDigits))
-    }
-
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                List(getItemsByDate()) { daily in
+                List(viewModel.getItemsByDate(toDoListItems)) { daily in
                     Section(daily.date) {
                         ToDoSubListView(
                             viewModel: viewModel, items: daily.items,
@@ -110,6 +76,23 @@ struct ToDoListView: View {
                 context.insert(
                     ToDoListItem(
                         title: "Test 3", dueDate: .now, priority: 3))
+                context.insert(
+                    ToDoListItem(
+                        title: "Test 4",
+                        dueDate: .now.addingTimeInterval(-2*24 * 60 * 60),
+                        priority: 2))
+                context.insert(
+                    ToDoListItem(
+                        title: "Test 5",
+                        dueDate: .now.addingTimeInterval(-1*24 * 60 * 60),
+                        priority: 2))
+                /*
+                if isNotificationEnabled {
+                    if toDoListItems.count > 0 && toDoListItems.sorted(by: { $0.dueDate < $1.dueDate }).first!.dueDate <= .now.addingTimeInterval(60*60*24) {
+                        nbuilder.sendNotification(title: "Day's not finished yet...", body: "You still have some task to do!")
+                    }
+                }*/
+                
             })
         }
     }
