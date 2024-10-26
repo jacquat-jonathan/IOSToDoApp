@@ -27,6 +27,47 @@ enum Priority: Int, CaseIterable, Identifiable {
     }
 }
 
+enum RecursivityEnum: Int, Identifiable, CaseIterable {
+    case none = 0, daily, weekly, monthly, yearly, monday, tuesday, wednesday, thursday, friday, saturday, sunday
+    var id: Int { self.rawValue }
+    
+    var name: String {
+        switch self {
+        case .none: "None"
+        case .daily: "Daily"
+        case .weekly: "Weekly"
+        case .monthly: "Monthly"
+        case .yearly: "Yearly"
+        case .monday: "Each monday"
+        case .tuesday: "Each tuesday"
+        case .wednesday: "Each wednesday"
+        case .thursday: "Each thursday"
+        case .friday: "Each friday"
+        case .saturday: "Each saturday"
+        case .sunday: "Each sunday"
+        }
+    }
+    
+    static func from(int: Int) -> RecursivityEnum? {
+        return RecursivityEnum(rawValue: int)
+    }
+}
+
+@Model
+class Recursivity: Identifiable {
+    var type: Int
+    var repeats: Int
+    
+    init(type: Int, repeats: Int) {
+        self.type = type
+        self.repeats = repeats
+    }
+    
+    init() {
+        self.type = RecursivityEnum.none.rawValue
+        self.repeats = 0
+    }
+}
 
 @Model
 class ToDoListItem: Identifiable, ObservableObject {
@@ -36,14 +77,16 @@ class ToDoListItem: Identifiable, ObservableObject {
     var isArchived: Bool
     var category: Category?
     var priority: Int
+    var recursivity: Recursivity
     // var reminder: Bool
 
-    init(title: String, dueDate: Date, priority: Int) {
+    init(title: String, dueDate: Date, priority: Int, recursivity: Recursivity? = nil) {
         self.title = title
         self.dueDate = dueDate
         self.isDone = false
         self.isArchived = false
         self.priority = priority
+        self.recursivity = recursivity != nil ? recursivity! : Recursivity()
     }
     
     init() {
@@ -52,6 +95,7 @@ class ToDoListItem: Identifiable, ObservableObject {
         self.isDone = false
         self.isArchived = false
         self.priority = Priority.medium.rawValue
+        self.recursivity = Recursivity()
     }
     
     func setDone(_ state: Bool) {

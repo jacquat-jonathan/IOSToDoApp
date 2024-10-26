@@ -54,17 +54,19 @@ struct ToDoListView: View {
                     })
             }
             .sheet(isPresented: $viewModel.showingNewItemView) {
-                NewItemView(newItemPresented: $viewModel.showingNewItemView)
+                EditableItemView(
+                    viewModel: EditableItemViewViewModel(),
+                    itemPresented: $viewModel.showingNewItemView)
             }
             .sheet(isPresented: $viewModel.showingUpdateItemView) {
-                if let item = viewModel.itemToUpdate {
-                    UpdateItemView(
-                        item: item,
-                        updateItemPresented: $viewModel
-                            .showingUpdateItemView)
+                if viewModel.itemToUpdate != nil {
+                    EditableItemView(
+                        viewModel: EditableItemViewViewModel(item: viewModel.itemToUpdate!),
+                        itemPresented: $viewModel.showingUpdateItemView)
                 }
             }
             .task({
+                /*
                 context.insert(
                     ToDoListItem(
                         title: "Test 1", dueDate: .now, priority: 4))
@@ -79,20 +81,20 @@ struct ToDoListView: View {
                 context.insert(
                     ToDoListItem(
                         title: "Test 4",
-                        dueDate: .now.addingTimeInterval(-2*24 * 60 * 60),
+                        dueDate: .now.addingTimeInterval(-2 * 24 * 60 * 60),
                         priority: 2))
                 context.insert(
                     ToDoListItem(
                         title: "Test 5",
-                        dueDate: .now.addingTimeInterval(-1*24 * 60 * 60),
+                        dueDate: .now.addingTimeInterval(-1 * 24 * 60 * 60),
                         priority: 2))
-                /*
+                
                 if isNotificationEnabled {
                     if toDoListItems.count > 0 && toDoListItems.sorted(by: { $0.dueDate < $1.dueDate }).first!.dueDate <= .now.addingTimeInterval(60*60*24) {
                         nbuilder.sendNotification(title: "Day's not finished yet...", body: "You still have some task to do!")
                     }
                 }*/
-                
+
             })
         }
     }
