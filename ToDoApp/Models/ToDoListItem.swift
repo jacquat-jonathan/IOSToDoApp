@@ -84,7 +84,7 @@ class ToDoListItem: Identifiable, ObservableObject {
 
     init(title: String, dueDate: Date, priority: Int, recursivity: Recursivity? = nil) {
         self.title = title
-        self.dueDate = dueDate
+        self.dueDate = Calendar.current.startOfDay(for: dueDate)
         self.isDone = false
         self.isArchived = false
         self.priority = priority
@@ -93,7 +93,7 @@ class ToDoListItem: Identifiable, ObservableObject {
     
     init() {
         self.title = ""
-        self.dueDate = Date()
+        self.dueDate = Calendar.current.startOfDay(for: .now)
         self.isDone = false
         self.isArchived = false
         self.priority = Priority.medium.rawValue

@@ -12,6 +12,14 @@ struct SettingsView: View {
     @AppStorage("isNotificationEnabled") private var isNotificationEnabled =
         false
     @AppStorage("isAutomaticArchive") private var isAutomaticArchive = true
+    
+    func getAppVersion() -> String {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+           let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            return "Version \(version).\(build)"
+        }
+        return "Version information not available"
+    }
 
     var body: some View {
         NavigationView {
@@ -42,7 +50,7 @@ struct SettingsView: View {
                             }
                         }
                     }
-                    Text("Version 0.1")
+                    Text(getAppVersion())
                 }
                 .listStyle(.automatic)
                 .background(.white)

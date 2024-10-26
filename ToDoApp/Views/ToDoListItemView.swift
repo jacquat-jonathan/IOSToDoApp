@@ -11,6 +11,8 @@ import SwiftUI
 struct ToDoListItemView: View {
     @StateObject private var viewModel = ToDoListItemViewViewModel()
     @Environment(\.modelContext) private var context
+    @AppStorage("isNotificationEnabled") private var isNotificationEnabled =
+        false
     private let notificationBuilder: NotificationBuilder = NotificationBuilder()
 
     let item: ToDoListItem
@@ -43,7 +45,7 @@ struct ToDoListItemView: View {
                 viewModel.toggleIsDone(item: item)
                 if item.isDone {
                     notificationBuilder.sendNotification(
-                        title: item.title, body: "Good job! Task done!")
+                        title: item.title, body: "Good job! Task done!", isNotificationEnabled: isNotificationEnabled)
                 }
             } label: {
                 Image(

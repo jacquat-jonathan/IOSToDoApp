@@ -21,16 +21,39 @@ class EditableItemViewViewModel: ObservableObject {
     }
 
     func save(context: ModelContext) {
-        print(item.title)
-        print(item.dueDate)
         guard canSave else {
             return
         }
         if !isUpdating {
-            print("create")
-            context.insert(item)
+            if item.recursivity.type != RecursivityEnum.none.rawValue {
+                let calendar = Calendar.current
+                switch RecursivityEnum.from(int: item.recursivity.type) {
+                case .daily:
+                    for rep in 0...item.recursivity.repeats {
+                        let newDate = calendar.date(byAdding: .day, value: rep, to: item.dueDate)
+                        context.insert(ToDoListItem(title: item.title, dueDate: newDate!, priority: item.priority, recursivity: item.recursivity))
+                    }
+                case .weekly:
+                    for rep in 0...item.recursivity.repeats {
+                        let newDate = calendar.date(byAdding: .day, value: rep * 7, to: item.dueDate)
+                        context.insert(ToDoListItem(title: item.title, dueDate: newDate!, priority: item.priority, recursivity: item.recursivity))
+                    }
+                case .monthly:
+                    for rep in 0...item.recursivity.repeats {
+                        let newDate = calendar.date(byAdding: .month, value: rep, to: item.dueDate)
+                        context.insert(ToDoListItem(title: item.title, dueDate: newDate!, priority: item.priority, recursivity: item.recursivity))
+                    }
+                case .yearly:
+                    for rep in 0...item.recursivity.repeats {
+                        let newDate = calendar.date(byAdding: .year, value: rep, to: item.dueDate)
+                        context.insert(ToDoListItem(title: item.title, dueDate: newDate!, priority: item.priority, recursivity: item.recursivity))
+                    }
+                case nil, .some(.none):
+                    context.insert(item)
+                }
+            }
+            try? context.save()
         }
-        try? context.save()
     }
 
     var canSave: Bool {

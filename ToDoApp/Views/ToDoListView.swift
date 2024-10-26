@@ -36,14 +36,33 @@ struct ToDoListView: View {
             VStack(alignment: .leading) {
                 List(viewModel.getItemsByDate(toDoListItems)) { daily in
                     Section(daily.date) {
-                        ToDoSubListView(
-                            viewModel: viewModel, items: daily.items,
-                            date: daily.date)
+                        ForEach(daily.items) { item in
+                            ToDoListItemView(item: item)
+                                .swipeActions {
+                                    Button(
+                                        "Delete",
+                                        action: {
+                                            viewModel.delete(
+                                                context: context, item: item)
+                                        }
+                                    )
+                                    .tint(.red)
+
+                                    Button("Update") {
+                                        viewModel.itemToUpdate = item
+                                        viewModel.showingUpdateItemView = true
+                                    }.tint(.blue)
+                                    Button("Archive") {
+                                        viewModel.setArchive(
+                                            context: context, item: item)
+                                    }
+                                }
+                        }
                     }
                 }
 
             }
-            .navigationTitle("To Do List")
+            .navigationTitle("Tasks")
             .toolbar {
                 ToolbarItemGroup(
                     placement: .topBarTrailing,
@@ -61,7 +80,8 @@ struct ToDoListView: View {
             .sheet(isPresented: $viewModel.showingUpdateItemView) {
                 if viewModel.itemToUpdate != nil {
                     EditableItemView(
-                        viewModel: EditableItemViewViewModel(item: viewModel.itemToUpdate!),
+                        viewModel: EditableItemViewViewModel(
+                            item: viewModel.itemToUpdate!),
                         itemPresented: $viewModel.showingUpdateItemView)
                 }
             }
@@ -88,7 +108,7 @@ struct ToDoListView: View {
                         title: "Test 5",
                         dueDate: .now.addingTimeInterval(-1 * 24 * 60 * 60),
                         priority: 2))
-                
+
                 if isNotificationEnabled {
                     if toDoListItems.count > 0 && toDoListItems.sorted(by: { $0.dueDate < $1.dueDate }).first!.dueDate <= .now.addingTimeInterval(60*60*24) {
                         nbuilder.sendNotification(title: "Day's not finished yet...", body: "You still have some task to do!")

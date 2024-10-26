@@ -20,7 +20,12 @@ struct MainView: View {
                 ToDoListView()
                     .modelContainer(for: ToDoListItem.self)
                     .tabItem {
-                        Label("Home", systemImage: "house")
+                        Label("Tasks", systemImage: "pencil.and.list.clipboard")
+                    }
+                CalendarView()
+                    .modelContainer(for: ToDoListItem.self)
+                    .tabItem {
+                        Label("Calendar", systemImage: "calendar")
                     }
                 ArchiveView()
                     .modelContainer(for: ToDoListItem.self)

@@ -76,7 +76,7 @@ class ToDoListViewViewModel: ObservableObject {
     }
 
     func formatDate(_ date: Date) -> String {
-        return date.formatted(.dateTime.month(.wide).day(.twoDigits))
+        return date.formatted(.dateTime.year().month(.wide).day(.twoDigits))
     }
     
     func movePassedTasks(context: ModelContext, list: [ToDoListItem]) {
