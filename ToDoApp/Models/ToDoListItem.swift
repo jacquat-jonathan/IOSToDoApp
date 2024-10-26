@@ -28,7 +28,7 @@ enum Priority: Int, CaseIterable, Identifiable {
 }
 
 enum RecursivityEnum: Int, Identifiable, CaseIterable {
-    case none = 0, daily, weekly, monthly, yearly, monday, tuesday, wednesday, thursday, friday, saturday, sunday
+    case none = 0, daily, weekly, monthly, yearly //, monday, tuesday, wednesday, thursday, friday, saturday, sunday
     var id: Int { self.rawValue }
     
     var name: String {
@@ -38,6 +38,7 @@ enum RecursivityEnum: Int, Identifiable, CaseIterable {
         case .weekly: "Weekly"
         case .monthly: "Monthly"
         case .yearly: "Yearly"
+        /*
         case .monday: "Each monday"
         case .tuesday: "Each tuesday"
         case .wednesday: "Each wednesday"
@@ -45,6 +46,7 @@ enum RecursivityEnum: Int, Identifiable, CaseIterable {
         case .friday: "Each friday"
         case .saturday: "Each saturday"
         case .sunday: "Each sunday"
+         */
         }
     }
     

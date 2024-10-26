@@ -40,22 +40,26 @@ struct EditableItemView: View {
                 Section("Recurrence") {
                     Picker(
                         selection: $viewModel.item.recursivity.type,
-                        label: Text("Recurrence")
+                        label: Text("Repeat")
                     ) {
                         ForEach(RecursivityEnum.allCases) { recursivity in
                             Text(recursivity.name).tag(recursivity.rawValue)
                         }
                     }
                     .pickerStyle(.menu)
-                    Picker(
-                        selection: $viewModel.item.recursivity.repeats,
-                        label: Text("Repeat")
-                    ) {
-                        ForEach((0...100), id: \.self) {
-                            Text("\($0)")
+                    HStack {
+                        Picker(
+                            selection: $viewModel.item.recursivity.repeats,
+                            label: Text("For")
+                        ) {
+                            ForEach((0...100), id: \.self) {
+                                Text("\($0)")
+                            }
                         }
+                        .pickerStyle(.automatic)
+                        Text("times")
+                            .fontWeight(.thin)
                     }
-                    .pickerStyle(.automatic)
                 }
 
                 Section("Task priority") {
